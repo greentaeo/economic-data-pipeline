@@ -38,7 +38,7 @@ class SmartETFCollector:
         self.years_back = years_back
         self.years_back = years_back
         self.engine = create_engine(DB_URI)
-        self.etfs = ['SPY', 'QQQ', 'GLD']
+        self.etfs = ['SPY', 'QQQ', 'GLD', 'TLT']
         logging.info("🧠 Smart ETF Collector initialized.")
 
     def get_last_date_from_db(self, ticker):
@@ -55,7 +55,7 @@ class SmartETFCollector:
             logging.warning(f"⚠️ {ticker} 날짜 조회 실패 (첫 수집으로 간주): {e}")
         return None
 
-    def get_etf_data(self, symbol, start_date, end_date):
+    def get_etf_data(self, symbol: str, start_date: datetime,  end_date: datetime) -> pd.DataFrame:
         start_str = start_date.strftime('%Y-%m-%d')
         end_str = end_date.strftime('%Y-%m-%d')
 
@@ -104,7 +104,7 @@ class SmartETFCollector:
             logging.error(f"❌ DB Save Failed: {e}")
 
     def run(self):
-        today = datetime.now()
+        today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
 
         for symbol in self.etfs:
             logging.info(f"--- Checking {symbol} ---")
@@ -118,26 +118,26 @@ class SmartETFCollector:
                 if isinstance(last_db_date, str):
                     last_db_date = datetime.strptime(last_db_date, '%Y-%m-%d').date()
 
-                start_date = last_db_date + timedelta(days=1)
-                # start_date를 datetime 객체로 변환 (API 함수 호환성 위함)
-                start_date = datetime(start_date.year, start_date.month, start_date.day)
+                start_date = datetime(last_db_date.year, last_db_date.month, last_db_date.day) + timedelta(days=1)
+                logging.info(f"🔄 이어달리기: {start_date.strftime('%Y-%m-%d')}부터 수집")
 
-                logging.info(f"🔄 이어달리기: DB 마지막 날짜는 {last_db_date}. {start_date.date()}부터 수집합니다.")
             else:
                 # DB에 데이터가 없으면 설정된 기간만큼 수집
                 start_date = today - timedelta(days=self.years_back * 365)
-                logging.info(f"🆕 신규 수집: {start_date.date()}부터 시작합니다.")
+                logging.info(f"🆕 신규 수집: {start_date.strftime('%Y-%m-%d')}부터 수집 (데이터 없음)")
                 # 2. 이미 최신이면 건너뛰기
-            if start_date < today:
-                logging.info(f"✅ {symbol}은 이미 최신 데이터입니다. 건너뜁니다.")
+                # 2. 날짜 검증 (시작일이 오늘보다 미래거나 같으면 패스)
+            if start_date >= today:
+                logging.info(f"✅ {symbol}: 업데이트할 데이터가 없습니다. (최신 상태)")
                 continue
 
                 # 3. 데이터 수집 및 저장
-            df = self.get_etf_date(symbol, start_date, today)
+            df = self.get_etf_data(symbol, start_date, today)
+
             if df is not None and not df.empty:
                 self.save_to_db(df)
             else:
-                logging.info(f"🤷‍♂️ {symbol}: 가져올 새로운 데이터가 없습니다.")
+                logging.info(f"🤷‍♂️ {symbol}: API에서 데이터를 못 가져왔습니다.")
 
             time.sleep(1)
 
