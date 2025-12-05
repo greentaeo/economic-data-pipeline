@@ -1,0 +1,34 @@
+2025-09-16 20:56:38,090 - INFO - Forex Simple Collector initialized.
+2025-09-16 20:59:22,336 - INFO - Forex Simple Collector initialized.
+2025-09-16 20:59:25,054 - INFO - === Starting full Forex data collection ===
+2025-09-16 20:59:25,054 - INFO - 
+📈 Processing EURUSD (Euro/USD)...
+2025-09-16 20:59:25,055 - INFO - Collecting EURUSD data from 2020-01-01 to 2025-09-16
+2025-09-16 20:59:25,911 - INFO - ✅ EURUSD: Fetched 1774 rows.
+2025-09-16 20:59:25,924 - INFO - ✅ EURUSD: Saved to /Users/xodh3/economic_analysis/data/raw/forex/EURUSD.csv. Total rows: 1774
+2025-09-16 20:59:28,929 - INFO - 
+📈 Processing GBPUSD (British Pound/USD)...
+2025-09-16 20:59:28,929 - INFO - Collecting GBPUSD data from 2020-01-01 to 2025-09-16
+2025-09-16 20:59:29,463 - INFO - ✅ GBPUSD: Fetched 1774 rows.
+2025-09-16 20:59:29,475 - INFO - ✅ GBPUSD: Saved to /Users/xodh3/economic_analysis/data/raw/forex/GBPUSD.csv. Total rows: 1774
+2025-09-16 20:59:32,480 - INFO - 
+📈 Processing USDJPY (USD/Japanese Yen)...
+2025-09-16 20:59:32,481 - INFO - Collecting USDJPY data from 2020-01-01 to 2025-09-16
+2025-09-16 20:59:33,119 - INFO - ✅ USDJPY: Fetched 1775 rows.
+2025-09-16 20:59:33,129 - INFO - ✅ USDJPY: Saved to /Users/xodh3/economic_analysis/data/raw/forex/USDJPY.csv. Total rows: 1775
+2025-09-16 20:59:36,135 - INFO - 
+📈 Processing USDCHF (USD/Swiss Franc)...
+2025-09-16 20:59:36,135 - INFO - Collecting USDCHF data from 2020-01-01 to 2025-09-16
+2025-09-16 20:59:36,691 - INFO - ✅ USDCHF: Fetched 1773 rows.
+2025-09-16 20:59:36,702 - INFO - ✅ USDCHF: Saved to /Users/xodh3/economic_analysis/data/raw/forex/USDCHF.csv. Total rows: 1773
+2025-09-16 20:59:39,707 - INFO - 
+📈 Processing AUDUSD (Australian Dollar/USD)...
+2025-09-16 20:59:39,707 - INFO - Collecting AUDUSD data from 2020-01-01 to 2025-09-16
+2025-09-16 20:59:40,323 - INFO - ✅ AUDUSD: Fetched 1774 rows.
+2025-09-16 20:59:40,334 - INFO - ✅ AUDUSD: Saved to /Users/xodh3/economic_analysis/data/raw/forex/AUDUSD.csv. Total rows: 1774
+2025-09-16 20:59:43,340 - INFO - 
+📈 Processing USDCAD (USD/Canadian Dollar)...
+2025-09-16 20:59:43,340 - INFO - Collecting USDCAD data from 2020-01-01 to 2025-09-16
+2025-09-16 20:59:43,979 - INFO - ✅ USDCAD: Fetched 1774 rows.
+2025-09-16 20:59:43,990 - INFO - ✅ USDCAD: Saved to /Users/xodh3/economic_analysis/data/raw/forex/USDCAD.csv. Total rows: 1774
+2025-09-16 20:59:46,995 - INFO - 🎉 === Forex collection finished! ===

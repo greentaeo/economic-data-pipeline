@@ -1,0 +1,36 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv
+venv/
+ENV/
+
+# IDE specific files
+.idea/
+.vscode/
+
+# Data files
+data/
+*.csv
+*.xlsx
+
+
+#__pycache__/: 파이썬이 실행 속도를 높이기 위해 자동으로 만드는 폴더입니다.
+#
+#.env: API 키가 들어있는 가장 중요한 파일입니다.
+#
+#.venv, venv/: 가상 환경 폴더로, 프로젝트에 필요한 라이브러리들이 설치되는 곳입니다.
+#
+#.idea/, .vscode/: PyCharm이나 VSCode 같은 코드 편집기가 사용하는 설정 폴더입니다.
+#
+#data/: 용량이 큰 데이터 파일들은 보통 Git에 올리지 않습니다.__pycache__/
+.DS_Store
+.env
+__pycache__/
+__pycache__/
+.idea/
+logs/
