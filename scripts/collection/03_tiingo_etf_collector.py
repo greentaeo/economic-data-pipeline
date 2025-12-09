@@ -55,40 +55,45 @@ class SmartETFCollector:
             logging.warning(f"⚠️ {ticker} 날짜 조회 실패 (첫 수집으로 간주): {e}")
         return None
 
-    def get_etf_data(self, symbol: str, start_date: datetime,  end_date: datetime) -> pd.DataFrame:
+    def get_etf_data(self, symbol: str, start_date: datetime, end_date: datetime) -> pd.DataFrame:
+        headers = {
+            'Content-Type': 'application/json',
+            'Authorization': f'Token {self.api_key}'
+        }
+
+        # 날짜 문자열 변환
         start_str = start_date.strftime('%Y-%m-%d')
         end_str = end_date.strftime('%Y-%m-%d')
 
-        logging.info(f"REQUEST: {symbol} ({start_str} ~ {end_str})")
-
-        url = f"{self.base_url}/tiingo/daily/{symbol}/prices"
-        params = {'token': self.api_key, 'startDate': start_str, 'endDate': end_str}
+        url = f"https://api.tiingo.com/tiingo/daily/{symbol}/prices?startDate={start_str}&endDate={end_str}"
 
         try:
-            response = requests.get(url, params=params, timeout=30)
+            response = requests.get(url, headers=headers)
             if response.status_code == 200:
                 data = response.json()
-                if not data: return None
+                if not data:
+                    return None
 
                 df = pd.DataFrame(data)
-                df['date'] = pd.to_datetime(df['date'])
 
-                # DB 테이블 컬럼명에 맞게 데이터 정리
-                # practice_spy 구조: ticker, trade_date, close_price
-                df = df[['date', 'adjClose']].copy()
-                df.columns = ['trade_date', 'close_price']  # 이름 변경
-                df['ticker'] = symbol  # ticker 컬럼 추가
-                251#1*
-                # 컬럼 순서 맞추기 (보기 좋게)
-                df = df[['ticker', 'trade_date', 'close_price']]
+                # [업그레이드 포인트] 필요한 컬럼만 뽑아서 이름 바꾸기
+                # Tiingo API가 주는 이름: date, open, high, low, close, volume, adjClose...
+                # 우리 DB 이름: trade_date, open_price, high_price, low_price, close_price, volume
 
-                logging.info(f"✅ {symbol}: Fetched {len(df)} rows.")
+                df = df[['date', 'open', 'high', 'low', 'close', 'volume']]
+                df.columns = ['trade_date', 'open_price', 'high_price', 'low_price', 'close_price', 'volume']
+
+                df['ticker'] = symbol
+                df['trade_date'] = pd.to_datetime(df['trade_date'])
+
+                logging.info(f"✅ {symbol}: {len(df)}개 데이터 수집 완료 (OHLCV)")
                 return df
             else:
-                logging.error(f"{symbol}: HTTP {response.status_code}")
+                logging.error(f"Error {response.status_code}: {response.text}")
+                return None
         except Exception as e:
-            logging.error(f"{symbol}: Error: {e}")
-        return None
+            logging.error(f"API Error: {e}")
+            return None
 
     def save_to_db(self, df):
         if df is None or df.empty:
