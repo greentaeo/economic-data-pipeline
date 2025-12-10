@@ -1,0 +1,41 @@
+name: Daily Data Collection 📈
+
+# 언제 실행할까?
+on:
+  schedule:
+    # 매일 아침 10시 00분 (한국 시간 기준)
+    # UTC 기준 01:00 = KST 10:00 (미국 주식 장 마감 후 데이터 수집)
+    - cron: '0 1 * * *'
+  # 수동으로도 실행할 수 있게 버튼 만들기
+  workflow_dispatch:
+
+jobs:
+  collect-data:
+    runs-on: ubuntu-latest  # 깃허브의 리눅스 컴퓨터 빌려쓰기
+
+    steps:
+    # 1. 코드 가져오기
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # 2. 파이썬 설치하기
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    # 3. 라이브러리 설치하기 (주문서대로)
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # 4. 수집기 실행하기! (가장 중요)
+    - name: Run Tiingo Collector
+      env:
+        # 아까 맡겨둔 비밀 열쇠 꺼내서 쓰기
+        TIINGO_API_KEY: ${{ secrets.TIINGO_API_KEY }}
+        SUPABASE_DB_URI: ${{ secrets.SUPABASE_DB_URI }}
+      run: |
+        # 우리가 만든 수집기 실행
+        python scripts/collection/03_tiingo_etf_collector.py
