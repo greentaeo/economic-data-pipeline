@@ -1,0 +1,159 @@
+2025-12-02 20:03:44,825 - INFO - ETF DB Collector initialized.
+2025-12-02 20:03:44,825 - INFO - --- Processing SPY ---
+2025-12-02 20:03:45,281 - INFO - ✅ SPY: Fetched 251 rows.
+2025-12-02 20:03:58,280 - INFO - 💾 Saved 251 rows to DB (practice_spy)
+2025-12-02 20:03:59,286 - INFO - --- Processing QQQ ---
+2025-12-02 20:03:59,735 - INFO - ✅ QQQ: Fetched 251 rows.
+2025-12-02 20:03:59,748 - INFO - 💾 Saved 251 rows to DB (practice_spy)
+2025-12-02 20:04:00,754 - INFO - --- Processing GLD ---
+2025-12-02 20:04:01,217 - INFO - ✅ GLD: Fetched 251 rows.
+2025-12-02 20:04:01,230 - INFO - 💾 Saved 251 rows to DB (practice_spy)
+2025-12-02 20:10:23,934 - INFO - ETF DB Collector initialized.
+2025-12-02 20:10:23,935 - INFO - --- Processing SPY ---
+2025-12-02 20:10:24,471 - INFO - ✅ SPY: Fetched 251 rows.
+2025-12-02 20:10:24,529 - INFO - 💾 Saved 251 rows to DB (practice_spy)
+2025-12-02 20:10:25,534 - INFO - --- Processing QQQ ---
+2025-12-02 20:10:26,011 - INFO - ✅ QQQ: Fetched 251 rows.
+2025-12-02 20:10:26,024 - INFO - 💾 Saved 251 rows to DB (practice_spy)
+2025-12-02 20:10:27,030 - INFO - --- Processing GLD ---
+2025-12-02 20:10:27,453 - INFO - ✅ GLD: Fetched 251 rows.
+2025-12-02 20:10:27,465 - INFO - 💾 Saved 251 rows to DB (practice_spy)
+2025-12-03 20:14:08,791 - INFO - ETF DB Collector initialized.
+2025-12-03 20:14:08,791 - INFO - --- Processing SPY ---
+2025-12-03 20:14:09,363 - INFO - ✅ SPY: Fetched 251 rows.
+2025-12-03 20:14:09,482 - ERROR - ❌ DB Save Failed: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "practice_spy_ticker_trade_date_key"
+DETAIL:  Key (ticker, trade_date)=(SPY, 2024-12-02) already exists.
+
+[SQL: INSERT INTO practice_spy (ticker, trade_date, close_price) VALUES (%(ticker__0)s, %(trade_date__0)s, %(close_price__0)s), (%(ticker__1)s, %(trade_date__1)s, %(close_price__1)s), (%(ticker__2)s, %(trade_date__2)s, %(close_price__2)s), (%(ticker__3)s,  ... 14946 characters truncated ... ade_date__249)s, %(close_price__249)s), (%(ticker__250)s, %(trade_date__250)s, %(close_price__250)s)]
+[parameters: {'ticker__0': 'SPY', 'close_price__0': 596.6852015748, 'trade_date__0': datetime.datetime(2024, 12, 3, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__1': 'SPY', 'close_price__1': 600.3903389394, 'trade_date__1': datetime.datetime(2024, 12, 4, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__2': 'SPY', 'close_price__2': 599.4023023089, 'trade_date__2': datetime.datetime(2024, 12, 5, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__3': 'SPY', 'close_price__3': 600.538544434, 'trade_date__3': datetime.datetime(2024, 12, 6, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__4': 'SPY', 'close_price__4': 597.4459897803, 'trade_date__4': datetime.datetime(2024, 12, 9, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__5': 'SPY', 'close_price__5': 595.5884809148, 'trade_date__5': datetime.datetime(2024, 12, 10, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__6': 'SPY', 'close_price__6': 600.1927316133, 'trade_date__6': datetime.datetime(2024, 12, 11, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__7': 'SPY', 'close_price__7': 597.1001769596, 'trade_date__7': datetime.datetime(2024, 12, 12, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__8': 'SPY', 'close_price__8': 596.9816125639, 'trade_date__8': datetime.datetime(2024, 12, 13, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__9': 'SPY', 'close_price__9': 599.5307470708, 'trade_date__9': datetime.datetime(2024, 12, 16, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__10': 'SPY', 'close_price__10': 597.0606554944, 'trade_date__10': datetime.datetime(2024, 12, 17, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__11': 'SPY', 'close_price__11': 579.2661157776, 'trade_date__11': datetime.datetime(2024, 12, 18, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__12': 'SPY', 'close_price__12': 579.0882691841, 'trade_date__12': datetime.datetime(2024, 12, 19, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__13': 'SPY', 'close_price__13': 586.0198875917, 'trade_date__13': datetime.datetime(2024, 12, 20, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__14': 'SPY', 'close_price__14': 589.5291667968, 'trade_date__14': datetime.datetime(2024, 12, 23, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__15': 'SPY', 'close_price__15': 596.0818039565, 'trade_date__15': datetime.datetime(2024, 12, 24, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__16': 'SPY', 'close_price__16': 596.1214568289 ... 653 parameters truncated ... 'close_price__234': 681.44, 'trade_date__234': datetime.datetime(2025, 11, 10, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__235': 'SPY', 'close_price__235': 683.0, 'trade_date__235': datetime.datetime(2025, 11, 11, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__236': 'SPY', 'close_price__236': 683.38, 'trade_date__236': datetime.datetime(2025, 11, 12, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__237': 'SPY', 'close_price__237': 672.04, 'trade_date__237': datetime.datetime(2025, 11, 13, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__238': 'SPY', 'close_price__238': 671.93, 'trade_date__238': datetime.datetime(2025, 11, 14, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__239': 'SPY', 'close_price__239': 665.67, 'trade_date__239': datetime.datetime(2025, 11, 17, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__240': 'SPY', 'close_price__240': 660.08, 'trade_date__240': datetime.datetime(2025, 11, 18, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__241': 'SPY', 'close_price__241': 662.63, 'trade_date__241': datetime.datetime(2025, 11, 19, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__242': 'SPY', 'close_price__242': 652.53, 'trade_date__242': datetime.datetime(2025, 11, 20, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__243': 'SPY', 'close_price__243': 659.03, 'trade_date__243': datetime.datetime(2025, 11, 21, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__244': 'SPY', 'close_price__244': 668.73, 'trade_date__244': datetime.datetime(2025, 11, 24, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__245': 'SPY', 'close_price__245': 675.02, 'trade_date__245': datetime.datetime(2025, 11, 25, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__246': 'SPY', 'close_price__246': 679.68, 'trade_date__246': datetime.datetime(2025, 11, 26, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__247': 'SPY', 'close_price__247': 683.39, 'trade_date__247': datetime.datetime(2025, 11, 28, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__248': 'SPY', 'close_price__248': 680.27, 'trade_date__248': datetime.datetime(2025, 12, 1, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__249': 'SPY', 'close_price__249': 681.53, 'trade_date__249': datetime.datetime(2025, 12, 2, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__250': 'SPY', 'close_price__250': 683.89, 'trade_date__250': datetime.datetime(2025, 12, 3, 0, 0, tzinfo=datetime.timezone.utc)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-12-03 20:14:10,489 - INFO - --- Processing QQQ ---
+2025-12-03 20:14:10,969 - INFO - ✅ QQQ: Fetched 251 rows.
+2025-12-03 20:14:10,974 - ERROR - ❌ DB Save Failed: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "practice_spy_ticker_trade_date_key"
+DETAIL:  Key (ticker, trade_date)=(QQQ, 2024-12-02) already exists.
+
+[SQL: INSERT INTO practice_spy (ticker, trade_date, close_price) VALUES (%(ticker__0)s, %(trade_date__0)s, %(close_price__0)s), (%(ticker__1)s, %(trade_date__1)s, %(close_price__1)s), (%(ticker__2)s, %(trade_date__2)s, %(close_price__2)s), (%(ticker__3)s,  ... 14946 characters truncated ... ade_date__249)s, %(close_price__249)s), (%(ticker__250)s, %(trade_date__250)s, %(close_price__250)s)]
+[parameters: {'ticker__0': 'QQQ', 'close_price__0': 514.1298383884, 'trade_date__0': datetime.datetime(2024, 12, 3, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__1': 'QQQ', 'close_price__1': 520.4859621087, 'trade_date__1': datetime.datetime(2024, 12, 4, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__2': 'QQQ', 'close_price__2': 519.0436492144, 'trade_date__2': datetime.datetime(2024, 12, 5, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__3': 'QQQ', 'close_price__3': 523.6888914325, 'trade_date__3': datetime.datetime(2024, 12, 6, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__4': 'QQQ', 'close_price__4': 519.6106273866, 'trade_date__4': datetime.datetime(2024, 12, 9, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__5': 'QQQ', 'close_price__5': 517.8400639716, 'trade_date__5': datetime.datetime(2024, 12, 10, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__6': 'QQQ', 'close_price__6': 527.1106544368, 'trade_date__6': datetime.datetime(2024, 12, 11, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__7': 'QQQ', 'close_price__7': 523.7087854035, 'trade_date__7': datetime.datetime(2024, 12, 12, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__8': 'QQQ', 'close_price__8': 527.717420551, 'trade_date__8': datetime.datetime(2024, 12, 13, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__9': 'QQQ', 'close_price__9': 535.316917456, 'trade_date__9': datetime.datetime(2024, 12, 16, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__10': 'QQQ', 'close_price__10': 532.9594818978, 'trade_date__10': datetime.datetime(2024, 12, 17, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__11': 'QQQ', 'close_price__11': 513.7319589693, 'trade_date__11': datetime.datetime(2024, 12, 18, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__12': 'QQQ', 'close_price__12': 511.4441523094, 'trade_date__12': datetime.datetime(2024, 12, 19, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__13': 'QQQ', 'close_price__13': 515.9103487889, 'trade_date__13': datetime.datetime(2024, 12, 20, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__14': 'QQQ', 'close_price__14': 520.9282647649, 'trade_date__14': datetime.datetime(2024, 12, 23, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__15': 'QQQ', 'close_price__15': 527.9919352704, 'trade_date__15': datetime.datetime(2024, 12, 24, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__16': 'QQQ', 'close_price__16': 527.6332721699 ... 653 parameters truncated ... 'close_price__234': 623.23, 'trade_date__234': datetime.datetime(2025, 11, 10, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__235': 'QQQ', 'close_price__235': 621.57, 'trade_date__235': datetime.datetime(2025, 11, 11, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__236': 'QQQ', 'close_price__236': 621.08, 'trade_date__236': datetime.datetime(2025, 11, 12, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__237': 'QQQ', 'close_price__237': 608.4, 'trade_date__237': datetime.datetime(2025, 11, 13, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__238': 'QQQ', 'close_price__238': 608.86, 'trade_date__238': datetime.datetime(2025, 11, 14, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__239': 'QQQ', 'close_price__239': 603.66, 'trade_date__239': datetime.datetime(2025, 11, 17, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__240': 'QQQ', 'close_price__240': 596.31, 'trade_date__240': datetime.datetime(2025, 11, 18, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__241': 'QQQ', 'close_price__241': 599.87, 'trade_date__241': datetime.datetime(2025, 11, 19, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__242': 'QQQ', 'close_price__242': 585.67, 'trade_date__242': datetime.datetime(2025, 11, 20, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__243': 'QQQ', 'close_price__243': 590.07, 'trade_date__243': datetime.datetime(2025, 11, 21, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__244': 'QQQ', 'close_price__244': 605.16, 'trade_date__244': datetime.datetime(2025, 11, 24, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__245': 'QQQ', 'close_price__245': 608.89, 'trade_date__245': datetime.datetime(2025, 11, 25, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__246': 'QQQ', 'close_price__246': 614.27, 'trade_date__246': datetime.datetime(2025, 11, 26, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__247': 'QQQ', 'close_price__247': 619.25, 'trade_date__247': datetime.datetime(2025, 11, 28, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__248': 'QQQ', 'close_price__248': 617.17, 'trade_date__248': datetime.datetime(2025, 12, 1, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__249': 'QQQ', 'close_price__249': 622.0, 'trade_date__249': datetime.datetime(2025, 12, 2, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__250': 'QQQ', 'close_price__250': 623.52, 'trade_date__250': datetime.datetime(2025, 12, 3, 0, 0, tzinfo=datetime.timezone.utc)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-12-03 20:14:11,980 - INFO - --- Processing GLD ---
+2025-12-03 20:14:12,409 - INFO - ✅ GLD: Fetched 251 rows.
+2025-12-03 20:14:12,419 - ERROR - ❌ DB Save Failed: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "practice_spy_ticker_trade_date_key"
+DETAIL:  Key (ticker, trade_date)=(GLD, 2024-12-02) already exists.
+
+[SQL: INSERT INTO practice_spy (ticker, trade_date, close_price) VALUES (%(ticker__0)s, %(trade_date__0)s, %(close_price__0)s), (%(ticker__1)s, %(trade_date__1)s, %(close_price__1)s), (%(ticker__2)s, %(trade_date__2)s, %(close_price__2)s), (%(ticker__3)s,  ... 14946 characters truncated ... ade_date__249)s, %(close_price__249)s), (%(ticker__250)s, %(trade_date__250)s, %(close_price__250)s)]
+[parameters: {'ticker__0': 'GLD', 'close_price__0': 243.93, 'trade_date__0': datetime.datetime(2024, 12, 3, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__1': 'GLD', 'close_price__1': 244.67, 'trade_date__1': datetime.datetime(2024, 12, 4, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__2': 'GLD', 'close_price__2': 242.86, 'trade_date__2': datetime.datetime(2024, 12, 5, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__3': 'GLD', 'close_price__3': 242.95, 'trade_date__3': datetime.datetime(2024, 12, 6, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__4': 'GLD', 'close_price__4': 245.36, 'trade_date__4': datetime.datetime(2024, 12, 9, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__5': 'GLD', 'close_price__5': 248.59, 'trade_date__5': datetime.datetime(2024, 12, 10, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__6': 'GLD', 'close_price__6': 250.96, 'trade_date__6': datetime.datetime(2024, 12, 11, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__7': 'GLD', 'close_price__7': 247.28, 'trade_date__7': datetime.datetime(2024, 12, 12, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__8': 'GLD', 'close_price__8': 244.29, 'trade_date__8': datetime.datetime(2024, 12, 13, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__9': 'GLD', 'close_price__9': 244.88, 'trade_date__9': datetime.datetime(2024, 12, 16, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__10': 'GLD', 'close_price__10': 243.94, 'trade_date__10': datetime.datetime(2024, 12, 17, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__11': 'GLD', 'close_price__11': 239.26, 'trade_date__11': datetime.datetime(2024, 12, 18, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__12': 'GLD', 'close_price__12': 239.6, 'trade_date__12': datetime.datetime(2024, 12, 19, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__13': 'GLD', 'close_price__13': 242.1, 'trade_date__13': datetime.datetime(2024, 12, 20, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__14': 'GLD', 'close_price__14': 240.96, 'trade_date__14': datetime.datetime(2024, 12, 23, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__15': 'GLD', 'close_price__15': 241.44, 'trade_date__15': datetime.datetime(2024, 12, 24, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__16': 'GLD', 'close_price__16': 243.07 ... 653 parameters truncated ... 'close_price__234': 378.38, 'trade_date__234': datetime.datetime(2025, 11, 10, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__235': 'GLD', 'close_price__235': 379.87, 'trade_date__235': datetime.datetime(2025, 11, 11, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__236': 'GLD', 'close_price__236': 385.99, 'trade_date__236': datetime.datetime(2025, 11, 12, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__237': 'GLD', 'close_price__237': 382.87, 'trade_date__237': datetime.datetime(2025, 11, 13, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__238': 'GLD', 'close_price__238': 375.96, 'trade_date__238': datetime.datetime(2025, 11, 14, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__239': 'GLD', 'close_price__239': 371.65, 'trade_date__239': datetime.datetime(2025, 11, 17, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__240': 'GLD', 'close_price__240': 374.35, 'trade_date__240': datetime.datetime(2025, 11, 18, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__241': 'GLD', 'close_price__241': 374.96, 'trade_date__241': datetime.datetime(2025, 11, 19, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__242': 'GLD', 'close_price__242': 374.85, 'trade_date__242': datetime.datetime(2025, 11, 20, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__243': 'GLD', 'close_price__243': 374.27, 'trade_date__243': datetime.datetime(2025, 11, 21, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__244': 'GLD', 'close_price__244': 380.2, 'trade_date__244': datetime.datetime(2025, 11, 24, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__245': 'GLD', 'close_price__245': 380.08, 'trade_date__245': datetime.datetime(2025, 11, 25, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__246': 'GLD', 'close_price__246': 383.12, 'trade_date__246': datetime.datetime(2025, 11, 26, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__247': 'GLD', 'close_price__247': 387.88, 'trade_date__247': datetime.datetime(2025, 11, 28, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__248': 'GLD', 'close_price__248': 389.75, 'trade_date__248': datetime.datetime(2025, 12, 1, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__249': 'GLD', 'close_price__249': 387.24, 'trade_date__249': datetime.datetime(2025, 12, 2, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__250': 'GLD', 'close_price__250': 386.88, 'trade_date__250': datetime.datetime(2025, 12, 3, 0, 0, tzinfo=datetime.timezone.utc)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-12-03 20:47:28,531 - INFO - 🧠 Smart ETF Collector initialized.
+2025-12-03 20:48:51,631 - INFO - 🧠 Smart ETF Collector initialized.
+2025-12-03 20:50:43,134 - INFO - 🧠 Smart ETF Collector initialized.
+2025-12-03 20:50:43,134 - INFO - --- Checking SPY ---
+2025-12-03 20:50:56,834 - INFO - 🔄 이어달리기: DB 마지막 날짜는 2025-12-01. 2025-12-02부터 수집합니다.
+2025-12-03 20:50:56,834 - INFO - ✅ SPY은 이미 최신 데이터입니다. 건너뜁니다.
+2025-12-03 20:50:56,834 - INFO - --- Checking QQQ ---
+2025-12-03 20:50:56,835 - INFO - 🔄 이어달리기: DB 마지막 날짜는 2025-12-01. 2025-12-02부터 수집합니다.
+2025-12-03 20:50:56,835 - INFO - ✅ QQQ은 이미 최신 데이터입니다. 건너뜁니다.
+2025-12-03 20:50:56,835 - INFO - --- Checking GLD ---
+2025-12-03 20:50:56,836 - INFO - 🔄 이어달리기: DB 마지막 날짜는 2025-12-01. 2025-12-02부터 수집합니다.
+2025-12-03 20:50:56,836 - INFO - ✅ GLD은 이미 최신 데이터입니다. 건너뜁니다.
+2025-12-03 20:53:52,817 - INFO - 🧠 Smart ETF Collector initialized.
+2025-12-03 20:53:52,817 - INFO - --- Checking SPY ---
+2025-12-03 20:53:52,840 - INFO - 🔄 이어달리기: DB 마지막 날짜는 2025-12-01. 2025-12-02부터 수집합니다.
+2025-12-03 20:53:52,840 - INFO - ✅ SPY은 이미 최신 데이터입니다. 건너뜁니다.
+2025-12-03 20:53:52,840 - INFO - --- Checking QQQ ---
+2025-12-03 20:53:52,841 - INFO - 🔄 이어달리기: DB 마지막 날짜는 2025-12-01. 2025-12-02부터 수집합니다.
+2025-12-03 20:53:52,841 - INFO - ✅ QQQ은 이미 최신 데이터입니다. 건너뜁니다.
+2025-12-03 20:53:52,841 - INFO - --- Checking GLD ---
+2025-12-03 20:53:52,841 - INFO - 🔄 이어달리기: DB 마지막 날짜는 2025-12-01. 2025-12-02부터 수집합니다.
+2025-12-03 20:53:52,841 - INFO - ✅ GLD은 이미 최신 데이터입니다. 건너뜁니다.
+2025-12-04 18:13:47,325 - INFO - 🧠 Smart ETF Collector initialized.
+2025-12-04 18:13:47,325 - INFO - --- Checking SPY ---
+2025-12-04 18:14:01,117 - INFO - 🔄 이어달리기: DB 마지막 날짜는 2025-12-01. 2025-12-02부터 수집합니다.
+2025-12-04 18:14:01,117 - INFO - ✅ SPY은 이미 최신 데이터입니다. 건너뜁니다.
+2025-12-04 18:14:01,117 - INFO - --- Checking QQQ ---
+2025-12-04 18:14:01,118 - INFO - 🔄 이어달리기: DB 마지막 날짜는 2025-12-01. 2025-12-02부터 수집합니다.
+2025-12-04 18:14:01,118 - INFO - ✅ QQQ은 이미 최신 데이터입니다. 건너뜁니다.
+2025-12-04 18:14:01,118 - INFO - --- Checking GLD ---
+2025-12-04 18:14:01,119 - INFO - 🔄 이어달리기: DB 마지막 날짜는 2025-12-01. 2025-12-02부터 수집합니다.
+2025-12-04 18:14:01,119 - INFO - ✅ GLD은 이미 최신 데이터입니다. 건너뜁니다.
+2025-12-04 18:14:01,119 - INFO - --- Checking TLT ---
+2025-12-04 18:14:01,120 - INFO - 🆕 신규 수집: 2024-12-04부터 시작합니다.
+2025-12-04 18:14:01,120 - INFO - ✅ TLT은 이미 최신 데이터입니다. 건너뜁니다.
+2025-12-04 18:18:58,945 - INFO - 🧠 Smart ETF Collector initialized.
+2025-12-04 18:18:58,945 - INFO - --- Checking SPY ---
+2025-12-04 18:18:58,968 - INFO - 🔄 이어달리기: DB 마지막 날짜는 2025-12-01. 2025-12-02부터 수집합니다.
+2025-12-04 18:18:58,968 - INFO - ✅ SPY은 이미 최신 데이터입니다. 건너뜁니다.
+2025-12-04 18:18:58,968 - INFO - --- Checking QQQ ---
+2025-12-04 18:18:58,969 - INFO - 🔄 이어달리기: DB 마지막 날짜는 2025-12-01. 2025-12-02부터 수집합니다.
+2025-12-04 18:18:58,969 - INFO - ✅ QQQ은 이미 최신 데이터입니다. 건너뜁니다.
+2025-12-04 18:18:58,969 - INFO - --- Checking GLD ---
+2025-12-04 18:18:58,969 - INFO - 🔄 이어달리기: DB 마지막 날짜는 2025-12-01. 2025-12-02부터 수집합니다.
+2025-12-04 18:18:58,969 - INFO - ✅ GLD은 이미 최신 데이터입니다. 건너뜁니다.
+2025-12-04 18:18:58,969 - INFO - --- Checking TLT ---
+2025-12-04 18:18:58,970 - INFO - 🆕 신규 수집: 2024-12-04부터 시작합니다.
+2025-12-04 18:18:58,970 - INFO - ✅ TLT은 이미 최신 데이터입니다. 건너뜁니다.
+2025-12-04 18:20:46,399 - INFO - 🧠 Smart ETF Collector initialized.
+2025-12-04 18:20:46,400 - INFO - --- Checking SPY ---
+2025-12-04 18:20:46,423 - INFO - 🔄 이어달리기: DB 마지막 날짜는 2025-12-01. 2025-12-02부터 수집합니다.
+2025-12-04 18:20:46,423 - INFO - ✅ SPY은 이미 최신 데이터입니다. 건너뜁니다.
+2025-12-04 18:20:46,423 - INFO - --- Checking QQQ ---
+2025-12-04 18:20:46,423 - INFO - 🔄 이어달리기: DB 마지막 날짜는 2025-12-01. 2025-12-02부터 수집합니다.
+2025-12-04 18:20:46,423 - INFO - ✅ QQQ은 이미 최신 데이터입니다. 건너뜁니다.
+2025-12-04 18:20:46,423 - INFO - --- Checking GLD ---
+2025-12-04 18:20:46,424 - INFO - 🔄 이어달리기: DB 마지막 날짜는 2025-12-01. 2025-12-02부터 수집합니다.
+2025-12-04 18:20:46,424 - INFO - ✅ GLD은 이미 최신 데이터입니다. 건너뜁니다.
+2025-12-04 18:20:46,424 - INFO - --- Checking TLT ---
+2025-12-04 18:20:46,424 - INFO - 🆕 신규 수집: 2024-12-04부터 시작합니다.
+2025-12-04 18:20:46,424 - INFO - ✅ TLT은 이미 최신 데이터입니다. 건너뜁니다.
+2025-12-04 18:23:25,815 - INFO - 🧠 Smart ETF Collector initialized.
+2025-12-04 18:23:25,816 - INFO - --- Checking SPY ---
+2025-12-04 18:23:25,838 - INFO - 🔄 이어달리기: 2025-12-02부터 수집
+2025-12-04 18:23:25,838 - INFO - REQUEST: SPY (2025-12-02 ~ 2025-12-04)
+2025-12-04 18:23:26,230 - INFO - ✅ SPY: Fetched 3 rows.
+2025-12-04 18:23:26,542 - ERROR - ❌ DB Save Failed: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "practice_spy_ticker_trade_date_key"
+DETAIL:  Key (ticker, trade_date)=(SPY, 2025-12-01) already exists.
+
+[SQL: INSERT INTO practice_spy (ticker, trade_date, close_price) VALUES (%(ticker__0)s, %(trade_date__0)s, %(close_price__0)s), (%(ticker__1)s, %(trade_date__1)s, %(close_price__1)s), (%(ticker__2)s, %(trade_date__2)s, %(close_price__2)s)]
+[parameters: {'close_price__0': 681.53, 'trade_date__0': datetime.datetime(2025, 12, 2, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__0': 'SPY', 'close_price__1': 683.89, 'trade_date__1': datetime.datetime(2025, 12, 3, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__1': 'SPY', 'close_price__2': 684.39, 'trade_date__2': datetime.datetime(2025, 12, 4, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__2': 'SPY'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-12-04 18:23:27,548 - INFO - --- Checking QQQ ---
+2025-12-04 18:23:27,551 - INFO - 🔄 이어달리기: 2025-12-02부터 수집
+2025-12-04 18:23:27,551 - INFO - REQUEST: QQQ (2025-12-02 ~ 2025-12-04)
+2025-12-04 18:23:27,858 - INFO - ✅ QQQ: Fetched 3 rows.
+2025-12-04 18:23:27,864 - ERROR - ❌ DB Save Failed: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "practice_spy_ticker_trade_date_key"
+DETAIL:  Key (ticker, trade_date)=(QQQ, 2025-12-01) already exists.
+
+[SQL: INSERT INTO practice_spy (ticker, trade_date, close_price) VALUES (%(ticker__0)s, %(trade_date__0)s, %(close_price__0)s), (%(ticker__1)s, %(trade_date__1)s, %(close_price__1)s), (%(ticker__2)s, %(trade_date__2)s, %(close_price__2)s)]
+[parameters: {'close_price__0': 622.0, 'trade_date__0': datetime.datetime(2025, 12, 2, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__0': 'QQQ', 'close_price__1': 623.52, 'trade_date__1': datetime.datetime(2025, 12, 3, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__1': 'QQQ', 'close_price__2': 622.94, 'trade_date__2': datetime.datetime(2025, 12, 4, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__2': 'QQQ'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-12-04 18:23:28,869 - INFO - --- Checking GLD ---
+2025-12-04 18:23:28,872 - INFO - 🔄 이어달리기: 2025-12-02부터 수집
+2025-12-04 18:23:28,872 - INFO - REQUEST: GLD (2025-12-02 ~ 2025-12-04)
+2025-12-04 18:23:29,188 - INFO - ✅ GLD: Fetched 3 rows.
+2025-12-04 18:23:29,194 - ERROR - ❌ DB Save Failed: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "practice_spy_ticker_trade_date_key"
+DETAIL:  Key (ticker, trade_date)=(GLD, 2025-12-01) already exists.
+
+[SQL: INSERT INTO practice_spy (ticker, trade_date, close_price) VALUES (%(ticker__0)s, %(trade_date__0)s, %(close_price__0)s), (%(ticker__1)s, %(trade_date__1)s, %(close_price__1)s), (%(ticker__2)s, %(trade_date__2)s, %(close_price__2)s)]
+[parameters: {'close_price__0': 387.24, 'trade_date__0': datetime.datetime(2025, 12, 2, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__0': 'GLD', 'close_price__1': 386.88, 'trade_date__1': datetime.datetime(2025, 12, 3, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__1': 'GLD', 'close_price__2': 387.13, 'trade_date__2': datetime.datetime(2025, 12, 4, 0, 0, tzinfo=datetime.timezone.utc), 'ticker__2': 'GLD'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-12-04 18:23:30,199 - INFO - --- Checking TLT ---
+2025-12-04 18:23:30,202 - INFO - 🆕 신규 수집: 2024-12-04부터 수집 (데이터 없음)
+2025-12-04 18:23:30,202 - INFO - REQUEST: TLT (2024-12-04 ~ 2025-12-04)
+2025-12-04 18:23:30,642 - INFO - ✅ TLT: Fetched 251 rows.
+2025-12-04 18:23:30,659 - INFO - 💾 Saved 251 rows to DB (practice_spy)
+2025-12-07 18:41:01,802 - INFO - 🧠 Smart ETF Collector initialized.
+2025-12-07 18:41:01,803 - INFO - --- Checking SPY ---
+2025-12-07 18:41:01,824 - INFO - 🆕 신규 수집: 2024-12-07부터 수집 (데이터 없음)
+2025-12-07 18:41:02,319 - INFO - ✅ SPY: 249개 데이터 수집 완료 (OHLCV)
+2025-12-07 18:41:02,365 - INFO - 💾 Saved 249 rows to DB (practice_spy)
+2025-12-07 18:41:03,370 - INFO - --- Checking QQQ ---
+2025-12-07 18:41:03,373 - INFO - 🆕 신규 수집: 2024-12-07부터 수집 (데이터 없음)
+2025-12-07 18:41:03,827 - INFO - ✅ QQQ: 249개 데이터 수집 완료 (OHLCV)
+2025-12-07 18:41:03,840 - INFO - 💾 Saved 249 rows to DB (practice_spy)
+2025-12-07 18:41:04,846 - INFO - --- Checking GLD ---
+2025-12-07 18:41:04,848 - INFO - 🆕 신규 수집: 2024-12-07부터 수집 (데이터 없음)
+2025-12-07 18:41:05,295 - INFO - ✅ GLD: 249개 데이터 수집 완료 (OHLCV)
+2025-12-07 18:41:05,314 - INFO - 💾 Saved 249 rows to DB (practice_spy)
+2025-12-07 18:41:06,320 - INFO - --- Checking TLT ---
+2025-12-07 18:41:06,322 - INFO - 🆕 신규 수집: 2024-12-07부터 수집 (데이터 없음)
+2025-12-07 18:41:06,793 - INFO - ✅ TLT: 249개 데이터 수집 완료 (OHLCV)
+2025-12-07 18:41:06,811 - INFO - 💾 Saved 249 rows to DB (practice_spy)

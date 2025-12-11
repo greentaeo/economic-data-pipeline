@@ -1,0 +1,78 @@
+2025-11-27 21:54:29,720 - INFO - 🚀 FRED Data Collection Start
+2025-11-27 21:54:29,720 - INFO - --- Processing Category: macro ---
+2025-11-27 21:54:29,720 - INFO - Fetching: GDP
+2025-11-27 21:54:30,280 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/macro/GDP.csv
+2025-11-27 21:54:30,280 - INFO - Fetching: GDPC1
+2025-11-27 21:54:30,497 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/macro/GDPC1.csv
+2025-11-27 21:54:30,497 - INFO - Fetching: CPIAUCSL
+2025-11-27 21:54:30,784 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/macro/CPIAUCSL.csv
+2025-11-27 21:54:30,784 - INFO - Fetching: PCEPI
+2025-11-27 21:54:31,067 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/macro/PCEPI.csv
+2025-11-27 21:54:31,067 - INFO - Fetching: FEDFUNDS
+2025-11-27 21:54:31,321 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/macro/FEDFUNDS.csv
+2025-11-27 21:54:31,321 - INFO - --- Processing Category: employment ---
+2025-11-27 21:54:31,321 - INFO - Fetching: UNRATE
+2025-11-27 21:54:31,568 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/employment/UNRATE.csv
+2025-11-27 21:54:31,568 - INFO - Fetching: PAYEMS
+2025-11-27 21:54:31,901 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/employment/PAYEMS.csv
+2025-11-27 21:54:31,902 - INFO - Fetching: CIVPART
+2025-11-27 21:54:32,143 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/employment/CIVPART.csv
+2025-11-27 21:54:32,143 - INFO - Fetching: ICSA
+2025-11-27 21:54:32,518 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/employment/ICSA.csv
+2025-11-27 21:54:32,518 - INFO - --- Processing Category: markets ---
+2025-11-27 21:54:32,518 - INFO - Fetching: NASDAQCOM
+2025-11-27 21:54:33,425 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/markets/NASDAQCOM.csv
+2025-11-27 21:54:33,425 - INFO - Fetching: DGS10
+2025-11-27 21:54:34,275 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/markets/DGS10.csv
+2025-11-27 21:54:34,275 - INFO - Fetching: DGS2
+2025-11-27 21:54:35,024 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/markets/DGS2.csv
+2025-11-27 21:54:35,024 - INFO - Fetching: T10Y2Y
+2025-11-27 21:54:35,805 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/markets/T10Y2Y.csv
+2025-11-27 21:54:35,805 - INFO - Fetching: VIXCLS
+2025-11-27 21:54:36,351 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/markets/VIXCLS.csv
+2025-11-27 21:54:36,351 - INFO - --- Processing Category: real_estate ---
+2025-11-27 21:54:36,351 - INFO - Fetching: HOUST
+2025-11-27 21:54:36,606 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/real_estate/HOUST.csv
+2025-11-27 21:54:36,606 - INFO - Fetching: PERMIT
+2025-11-27 21:54:36,879 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/real_estate/PERMIT.csv
+2025-11-27 21:54:36,880 - INFO - Fetching: MORTGAGE30US
+2025-11-27 21:54:37,204 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/real_estate/MORTGAGE30US.csv
+2025-11-27 21:54:37,204 - INFO - Fetching: MSPUS
+2025-11-27 21:54:37,610 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/real_estate/MSPUS.csv
+2025-11-27 21:54:37,611 - INFO - Fetching: CSUSHPISA
+2025-11-27 21:54:37,844 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/real_estate/CSUSHPISA.csv
+2025-11-27 21:54:37,844 - INFO - --- Processing Category: commodities ---
+2025-11-27 21:54:37,844 - INFO - Fetching: DCOILWTICO
+2025-11-27 21:54:38,441 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/commodities/DCOILWTICO.csv
+2025-11-27 21:54:38,441 - INFO - Fetching: DCOILBRENTEU
+2025-11-27 21:54:39,104 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/commodities/DCOILBRENTEU.csv
+2025-11-27 21:54:39,104 - INFO - Fetching: PCOPPUSDM
+2025-11-27 21:54:39,328 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/commodities/PCOPPUSDM.csv
+2025-11-27 21:54:39,328 - INFO - Fetching: GOLDPMGBD228NLBM
+2025-11-27 21:54:39,516 - ERROR - ❌ Failed GOLDPMGBD228NLBM: Bad Request.  The series does not exist.
+2025-11-27 21:54:39,517 - INFO - --- Processing Category: industrials ---
+2025-11-27 21:54:39,517 - INFO - Fetching: INDPRO
+2025-11-27 21:54:39,807 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/industrials/INDPRO.csv
+2025-11-27 21:54:39,807 - INFO - Fetching: NEWORDER
+2025-11-27 21:54:40,054 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/industrials/NEWORDER.csv
+2025-11-27 21:54:40,054 - INFO - Fetching: CAPUTLB50001SQ
+2025-11-27 21:54:40,298 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/industrials/CAPUTLB50001SQ.csv
+2025-11-27 21:54:40,298 - INFO - --- Processing Category: consumer ---
+2025-11-27 21:54:40,298 - INFO - Fetching: RSAFS
+2025-11-27 21:54:40,520 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/consumer/RSAFS.csv
+2025-11-27 21:54:40,520 - INFO - Fetching: PCE
+2025-11-27 21:54:40,772 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/consumer/PCE.csv
+2025-11-27 21:54:40,772 - INFO - Fetching: PSAVERT
+2025-11-27 21:54:41,018 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/consumer/PSAVERT.csv
+2025-11-27 21:54:41,018 - INFO - Fetching: UMCSENT
+2025-11-27 21:54:41,272 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/consumer/UMCSENT.csv
+2025-11-27 21:54:41,273 - INFO - --- Processing Category: international ---
+2025-11-27 21:54:41,273 - INFO - Fetching: BOPGSTB
+2025-11-27 21:54:41,503 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/international/BOPGSTB.csv
+2025-11-27 21:54:41,503 - INFO - Fetching: DEXUSEU
+2025-11-27 21:54:41,972 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/international/DEXUSEU.csv
+2025-11-27 21:54:41,972 - INFO - Fetching: DEXCHUS
+2025-11-27 21:54:42,650 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/international/DEXCHUS.csv
+2025-11-27 21:54:42,650 - INFO - Fetching: DTWEXBGS
+2025-11-27 21:54:43,074 - INFO - ✅ Saved: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators/international/DTWEXBGS.csv
+2025-11-27 21:54:43,074 - INFO - 🎉 FRED Collection Finished

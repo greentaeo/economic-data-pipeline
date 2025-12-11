@@ -5,8 +5,10 @@ fred_indicators = {
         {'id': 'GDP', 'name_kr': '명목 GDP'},
         {'id': 'GDPC1', 'name_kr': '실질 GDP'},
         {'id': 'CPIAUCSL', 'name_kr': '소비자물가지수'},
+        {'id': 'CPILFESL', 'name_kr': '근원 소비자물가지수 (추가)'}, # Core CPI 추가
         {'id': 'PCEPI', 'name_kr': 'PCE 물가지수'},
-        {'id': 'FEDFUNDS', 'name_kr': '연방기금금리'}
+        {'id': 'FEDFUNDS', 'name_kr': '연방기금금리'},
+        {'id': 'M2SL', 'name_kr': 'M2 통화량 (추가)'} # M2 통화량 추가
     ],
     'employment': [
         {'id': 'UNRATE', 'name_kr': '실업률'},
@@ -36,6 +38,7 @@ fred_indicators = {
     ],
     'industrials': [
         {'id': 'INDPRO', 'name_kr': '산업생산지수'},
+        {'id': 'NAPM', 'name_kr': 'ISM 제조업 지수 (추가)'}, # ISM 제조업 추가
         {'id': 'NEWORDER', 'name_kr': '제조업 신규주문'},
         {'id': 'CAPUTLB50001SQ', 'name_kr': '설비가동률'}
     ],
@@ -52,4 +55,3 @@ fred_indicators = {
         {'id': 'DTWEXBGS', 'name_kr': '달러 인덱스'}
     ]
 }
-

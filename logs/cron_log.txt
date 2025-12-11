@@ -1,0 +1,48 @@
+Traceback (most recent call last):
+  File "/Users/xodh3/economic_analysis/scripts/processing/02_daily_signal_alert.py", line 2, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+Traceback (most recent call last):
+  File "/Users/xodh3/economic_analysis/scripts/processing/02_daily_signal_alert.py", line 2, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+Traceback (most recent call last):
+  File "/Users/xodh3/economic_analysis/scripts/processing/02_daily_signal_alert.py", line 2, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+Traceback (most recent call last):
+  File "/Users/xodh3/economic_analysis/scripts/processing/02_daily_signal_alert.py", line 2, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+Traceback (most recent call last):
+  File "/Users/xodh3/economic_analysis/scripts/processing/02_daily_signal_alert.py", line 2, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+Traceback (most recent call last):
+  File "/Users/xodh3/economic_analysis/scripts/processing/02_daily_signal_alert.py", line 2, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+Traceback (most recent call last):
+  File "/Users/xodh3/economic_analysis/scripts/processing/02_daily_signal_alert.py", line 2, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+Traceback (most recent call last):
+  File "/Users/xodh3/economic_analysis/scripts/processing/02_daily_signal_alert.py", line 2, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+Traceback (most recent call last):
+  File "/Users/xodh3/economic_analysis/scripts/processing/02_daily_signal_alert.py", line 2, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+✅ Data Directory Initialized at: /Volumes/Postgres_DB/economic_data
+🔍 QQQ 신호 분석 중...
+ℹ️ 특이 신호 없음. 현재 상태: 상승 추세 유지 중 📈
+✅ Data Directory Initialized at: /Volumes/Postgres_DB/economic_data
+🔍 QQQ 신호 분석 중...
+ℹ️ 특이 신호 없음. 현재 상태: 상승 추세 유지 중 📈
+✅ Data Directory Initialized at: /Volumes/Postgres_DB/economic_data
+🔍 QQQ 신호 분석 중...
+ℹ️ 특이 신호 없음. 현재 상태: 상승 추세 유지 중 📈
+✅ Data Directory Initialized at: /Volumes/Postgres_DB/economic_data
+🔍 QQQ 신호 분석 중...
+ℹ️ 특이 신호 없음. 현재 상태: 상승 추세 유지 중 📈

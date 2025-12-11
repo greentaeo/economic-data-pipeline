@@ -1,0 +1,35 @@
+2025-11-27 21:53:42,346 - INFO - Starting Selenium scraper...
+2025-11-27 21:53:42,346 - INFO - ====== WebDriver manager ======
+2025-11-27 21:53:46,892 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-27 21:53:46,970 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-27 21:53:47,031 - INFO - There is no [mac64] chromedriver "142.0.7444.175" for browser google-chrome "142.0.7444" in cache
+2025-11-27 21:53:47,037 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-27 21:53:47,190 - INFO - WebDriver version 142.0.7444.175 selected
+2025-11-27 21:53:47,193 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/142.0.7444.175/mac-arm64/chromedriver-mac-arm64.zip
+2025-11-27 21:53:47,193 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/142.0.7444.175/mac-arm64/chromedriver-mac-arm64.zip
+2025-11-27 21:53:47,270 - INFO - Driver downloading response is 200
+2025-11-27 21:53:47,460 - INFO - Get LATEST chromedriver version for google-chrome
+2025-11-27 21:53:47,605 - INFO - Driver has been saved in cache [/Users/xodh3/.wdm/drivers/chromedriver/mac64/142.0.7444.175]
+2025-11-27 21:53:48,834 - INFO - Processing URL: https://www.forexfactory.com/calendar?month=nov.2025
+2025-11-27 21:53:58,200 - INFO - Processing URL: https://www.forexfactory.com/calendar?month=oct.2025
+2025-11-27 21:54:13,499 - ERROR - Error processing URL https://www.forexfactory.com/calendar?month=oct.2025: Message: 
+Stacktrace:
+0   chromedriver                        0x00000001013caecc cxxbridge1$str$ptr + 2941512
+1   chromedriver                        0x00000001013c2b88 cxxbridge1$str$ptr + 2907908
+2   chromedriver                        0x0000000100eda2b0 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 74020
+3   chromedriver                        0x0000000100f2188c _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 366336
+4   chromedriver                        0x0000000100f62d54 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 633800
+5   chromedriver                        0x0000000100f15ef0 _RNvCsgXDX2mvAJAg_7___rustc35___rust_no_alloc_shim_is_unstable_v2 + 318820
+6   chromedriver                        0x000000010138e0c8 cxxbridge1$str$ptr + 2692164
+7   chromedriver                        0x00000001013918dc cxxbridge1$str$ptr + 2706520
+8   chromedriver                        0x000000010136e84c cxxbridge1$str$ptr + 2563016
+9   chromedriver                        0x00000001013921b4 cxxbridge1$str$ptr + 2708784
+10  chromedriver                        0x00000001013600f4 cxxbridge1$str$ptr + 2503792
+11  chromedriver                        0x00000001013b1498 cxxbridge1$str$ptr + 2836500
+12  chromedriver                        0x00000001013b161c cxxbridge1$str$ptr + 2836888
+13  chromedriver                        0x00000001013c27d8 cxxbridge1$str$ptr + 2906964
+14  libsystem_pthread.dylib             0x000000019ae26c0c _pthread_start + 136
+15  libsystem_pthread.dylib             0x000000019ae21b80 thread_start + 8
+
+2025-11-27 21:54:13,601 - INFO - Scraping finished. Saving data...
+2025-11-27 21:54:13,606 - INFO - ✅ Saved to: /Volumes/Postgres_DB/economic_data/01_raw/events/forex_factory_usd_recent.csv

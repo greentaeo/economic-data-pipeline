@@ -1,85 +1,85 @@
+import os
 import sys
-import logging
 import pandas as pd
-from fredapi import Fred
-from pathlib import Path
+from sqlalchemy import create_engine, text
+from dotenv import load_dotenv
+from pandas_datareader import fred
+from datetime import datetime
 
-# --- [설정 파일 연동] ---
-FILE = Path(__file__).resolve()
-ROOT = FILE.parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.append(str(ROOT))
+# 님의 지표 목록이 있는 파일에서 리스트를 가져옵니다.
+from indicators import fred_indicators
 
-from config.settings import API_KEYS, DIRS, LOG_DIR
+# 경로 설정
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
+load_dotenv()
 
-# 같은 폴더에 있는 indicators.py 임포트
-try:
-    from scripts.collection.indicators import fred_indicators
-except ImportError:
-    # 경로 문제시 fallback
-    sys.path.append(str(FILE.parent))
-    from indicators import fred_indicators
+DB_URI = os.getenv("SUPABASE_DB_URI")
+if not DB_URI:
+    DB_URI = "postgresql+psycopg2://xodh3@localhost:5432/economy_db"
 
-# --- [로깅 설정] ---
-log_file = LOG_DIR / 'collect_fred_data.log'
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(log_file),
-        logging.StreamHandler()
-    ]
-)
+TABLE_NAME = "macro_time_series"
 
 
-def fetch_fred_data(fred_conn, indicators):
-    """FRED 데이터를 수집하여 외장하드에 저장"""
-    # 외장하드 경로: /Volumes/Postgres_DB/economic_data/01_raw/fred_indicators
-    base_path = DIRS['fred']
+def get_last_date_from_db(conn, indicator_symbol):
+    """DB에서 특정 지표의 마지막 날짜를 조회합니다."""
+    # DB에 데이터가 있을 경우, 마지막 날짜 다음 날부터 수집 시작
+    query = text(f"""
+        SELECT MAX(date_time) FROM {TABLE_NAME} 
+        WHERE indicator_symbol = :symbol
+    """)
+    result = conn.execute(query, {'symbol': indicator_symbol}).scalar()
 
-    for category, series_list in indicators.items():
-        logging.info(f"--- Processing Category: {category} ---")
+    if result:
+        # 마지막 날짜의 '다음 날'부터 수집 시작
+        return result.strftime('%Y-%m-%d')
+    # DB에 데이터가 없으면 1년 전부터 시작
+    return (datetime.now() - pd.Timedelta(days=365)).strftime('%Y-%m-%d')
 
-        # 카테고리별 폴더 자동 생성 (예: macro, employment...)
-        category_path = base_path / category
-        category_path.mkdir(parents=True, exist_ok=True)
 
-        for indicator_info in series_list:
+def collect_fred_data():
+    print("🚀 FRED 경제 지표 자동 업데이트 시작...")
+    engine = create_engine(DB_URI)
+
+    # 님께서 정의한 모든 지표 ID를 하나의 리스트로 만듭니다.
+    all_symbols = [d['id'] for category in fred_indicators.values() for d in category]
+
+    with engine.connect() as conn:
+        for symbol in all_symbols:
+
+            # DB에서 마지막 업데이트 날짜를 가져옵니다.
+            last_date = get_last_date_from_db(conn, symbol)
+
+            # FRED에서 수집 시작!
             try:
-                series_id = indicator_info['id']
-                # 데이터 수집
-                logging.info(f"Fetching: {series_id}")
-                data = fred_conn.get_series(series_id)
+                # pandas_datareader를 사용해 FRED에서 데이터 요청
+                # start=last_date로 설정하여 님의 유료 데이터 '다음 날'부터 가져옵니다.
+                df = fred.FredReader(symbols=symbol, start=last_date, end=datetime.now()).read()
 
-                file_name = f"{series_id}.csv"
-                output_path = category_path / file_name
+                # 데이터가 없는 경우
+                if df.empty or len(df) <= 1:
+                    print(f"   ⚠️ {symbol}: 새로운 데이터 없음.")
+                    continue
 
-                # 저장
-                data.to_frame(name=series_id).to_csv(output_path)
-                logging.info(f"✅ Saved: {output_path}")
+                # 데이터 정리
+                df = df.reset_index()
+                df.columns = ['date_time', 'value']
+                df['indicator_symbol'] = symbol
+                df['country'] = "United States"
+
+                # DB에 이어 붙이기 (append)
+                df[['date_time', 'indicator_symbol', 'value', 'country']].to_sql(
+                    TABLE_NAME, conn, if_exists='append', index=False
+                )
+
+                print(f"   ✅ {symbol}: {len(df)}개 신규 데이터 업데이트 완료.")
 
             except Exception as e:
-                failed_id = indicator_info.get('id', 'Unknown')
-                logging.error(f"❌ Failed {failed_id}: {e}")
+                print(f"   ❌ {symbol} 수집 에러: {e}")
+
+        conn.commit()  # 커밋
+
+    print("🎉 FRED 경제 지표 자동 업데이트 완료!")
 
 
-def main():
-    logging.info("🚀 FRED Data Collection Start")
-
-    # settings.py에서 API 키 가져오기
-    fred_key = API_KEYS['FRED']
-    if not fred_key:
-        logging.error("FRED_API_KEY missing in .env/settings.")
-        return
-
-    try:
-        fred = Fred(api_key=fred_key)
-        fetch_fred_data(fred, fred_indicators)
-    except Exception as e:
-        logging.error(f"FRED Critical Error: {e}")
-
-    logging.info("🎉 FRED Collection Finished")
-
-
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    collect_fred_data()
