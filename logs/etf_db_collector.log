@@ -157,3 +157,114 @@ DETAIL:  Key (ticker, trade_date)=(GLD, 2025-12-01) already exists.
 2025-12-07 18:41:06,322 - INFO - 🆕 신규 수집: 2024-12-07부터 수집 (데이터 없음)
 2025-12-07 18:41:06,793 - INFO - ✅ TLT: 249개 데이터 수집 완료 (OHLCV)
 2025-12-07 18:41:06,811 - INFO - 💾 Saved 249 rows to DB (practice_spy)
+2025-12-10 19:23:33,123 - INFO - 🧠 Smart ETF Collector initialized.
+2025-12-10 19:23:33,123 - INFO - --- Checking SPY ---
+2025-12-10 19:23:33,285 - INFO - 🔄 이어달리기: 2025-12-05부터 수집
+2025-12-10 19:23:33,624 - INFO - ✅ SPY: 4개 데이터 수집 완료 (OHLCV)
+2025-12-10 19:23:33,658 - ERROR - ❌ DB Save Failed: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "practice_spy_ticker_trade_date_key"
+DETAIL:  Key (ticker, trade_date)=(SPY, 2025-12-04) already exists.
+
+[SQL: INSERT INTO practice_spy (trade_date, open_price, high_price, low_price, close_price, volume, ticker) VALUES (%(trade_date__0)s, %(open_price__0)s, %(high_price__0)s, %(low_price__0)s, %(close_price__0)s, %(volume__0)s, %(ticker__0)s), (%(trade_date_ ... 265 characters truncated ... n_price__3)s, %(high_price__3)s, %(low_price__3)s, %(close_price__3)s, %(volume__3)s, %(ticker__3)s)]
+[parameters: {'volume__0': 79241045, 'low_price__0': 684.58, 'high_price__0': 688.39, 'ticker__0': 'SPY', 'close_price__0': 685.69, 'trade_date__0': datetime.datetime(2025, 12, 5, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__0': 685.47, 'volume__1': 53033654, 'low_price__1': 681.57, 'high_price__1': 686.64, 'ticker__1': 'SPY', 'close_price__1': 683.63, 'trade_date__1': datetime.datetime(2025, 12, 8, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__1': 686.59, 'volume__2': 56313923, 'low_price__2': 682.59, 'high_price__2': 685.385, 'ticker__2': 'SPY', 'close_price__2': 683.04, 'trade_date__2': datetime.datetime(2025, 12, 9, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__2': 683.15, 'volume__3': 85671334, 'low_price__3': 681.31, 'high_price__3': 688.97, 'ticker__3': 'SPY', 'close_price__3': 687.57, 'trade_date__3': datetime.datetime(2025, 12, 10, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__3': 682.56}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-12-10 19:23:34,663 - INFO - --- Checking QQQ ---
+2025-12-10 19:23:34,667 - INFO - 🔄 이어달리기: 2025-12-05부터 수집
+2025-12-10 19:23:34,974 - INFO - ✅ QQQ: 4개 데이터 수집 완료 (OHLCV)
+2025-12-10 19:23:34,980 - ERROR - ❌ DB Save Failed: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "practice_spy_ticker_trade_date_key"
+DETAIL:  Key (ticker, trade_date)=(QQQ, 2025-12-04) already exists.
+
+[SQL: INSERT INTO practice_spy (trade_date, open_price, high_price, low_price, close_price, volume, ticker) VALUES (%(trade_date__0)s, %(open_price__0)s, %(high_price__0)s, %(low_price__0)s, %(close_price__0)s, %(volume__0)s, %(ticker__0)s), (%(trade_date_ ... 265 characters truncated ... n_price__3)s, %(high_price__3)s, %(low_price__3)s, %(close_price__3)s, %(volume__3)s, %(ticker__3)s)]
+[parameters: {'volume__0': 53614169, 'low_price__0': 623.71, 'high_price__0': 628.92, 'ticker__0': 'QQQ', 'close_price__0': 625.48, 'trade_date__0': datetime.datetime(2025, 12, 5, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__0': 624.38, 'volume__1': 42019642, 'low_price__1': 621.69, 'high_price__1': 628.84, 'ticker__1': 'QQQ', 'close_price__1': 624.28, 'trade_date__1': datetime.datetime(2025, 12, 8, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__1': 627.21, 'volume__2': 36918603, 'low_price__2': 621.0, 'high_price__2': 625.87, 'ticker__2': 'QQQ', 'close_price__2': 625.05, 'trade_date__2': datetime.datetime(2025, 12, 9, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__2': 623.01, 'volume__3': 55031384, 'low_price__3': 620.99, 'high_price__3': 629.21, 'ticker__3': 'QQQ', 'close_price__3': 627.61, 'trade_date__3': datetime.datetime(2025, 12, 10, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__3': 623.85}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-12-10 19:23:35,985 - INFO - --- Checking GLD ---
+2025-12-10 19:23:35,989 - INFO - 🔄 이어달리기: 2025-12-05부터 수집
+2025-12-10 19:23:36,310 - INFO - ✅ GLD: 4개 데이터 수집 완료 (OHLCV)
+2025-12-10 19:23:36,316 - ERROR - ❌ DB Save Failed: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "practice_spy_ticker_trade_date_key"
+DETAIL:  Key (ticker, trade_date)=(GLD, 2025-12-04) already exists.
+
+[SQL: INSERT INTO practice_spy (trade_date, open_price, high_price, low_price, close_price, volume, ticker) VALUES (%(trade_date__0)s, %(open_price__0)s, %(high_price__0)s, %(low_price__0)s, %(close_price__0)s, %(volume__0)s, %(ticker__0)s), (%(trade_date_ ... 265 characters truncated ... n_price__3)s, %(high_price__3)s, %(low_price__3)s, %(close_price__3)s, %(volume__3)s, %(ticker__3)s)]
+[parameters: {'volume__0': 9449808, 'low_price__0': 386.175, 'high_price__0': 391.735, 'ticker__0': 'GLD', 'close_price__0': 386.44, 'trade_date__0': datetime.datetime(2025, 12, 5, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__0': 389.12, 'volume__1': 6766623, 'low_price__1': 384.01, 'high_price__1': 387.2418, 'ticker__1': 'GLD', 'close_price__1': 385.42, 'trade_date__1': datetime.datetime(2025, 12, 8, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__1': 387.02, 'volume__2': 6002824, 'low_price__2': 385.27, 'high_price__2': 388.21, 'ticker__2': 'GLD', 'close_price__2': 387.4, 'trade_date__2': datetime.datetime(2025, 12, 9, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__2': 385.62, 'volume__3': 9120475, 'low_price__3': 384.5, 'high_price__3': 389.76, 'ticker__3': 'GLD', 'close_price__3': 389.05, 'trade_date__3': datetime.datetime(2025, 12, 10, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__3': 385.95}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-12-10 19:23:37,321 - INFO - --- Checking TLT ---
+2025-12-10 19:23:37,324 - INFO - 🔄 이어달리기: 2025-12-05부터 수집
+2025-12-10 19:23:37,619 - INFO - ✅ TLT: 4개 데이터 수집 완료 (OHLCV)
+2025-12-10 19:23:37,625 - ERROR - ❌ DB Save Failed: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "practice_spy_ticker_trade_date_key"
+DETAIL:  Key (ticker, trade_date)=(TLT, 2025-12-04) already exists.
+
+[SQL: INSERT INTO practice_spy (trade_date, open_price, high_price, low_price, close_price, volume, ticker) VALUES (%(trade_date__0)s, %(open_price__0)s, %(high_price__0)s, %(low_price__0)s, %(close_price__0)s, %(volume__0)s, %(ticker__0)s), (%(trade_date_ ... 265 characters truncated ... n_price__3)s, %(high_price__3)s, %(low_price__3)s, %(close_price__3)s, %(volume__3)s, %(ticker__3)s)]
+[parameters: {'volume__0': 32808068, 'low_price__0': 88.045, 'high_price__0': 88.55, 'ticker__0': 'TLT', 'close_price__0': 88.17, 'trade_date__0': datetime.datetime(2025, 12, 5, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__0': 88.55, 'volume__1': 32097083, 'low_price__1': 87.56, 'high_price__1': 88.2, 'ticker__1': 'TLT', 'close_price__1': 87.88, 'trade_date__1': datetime.datetime(2025, 12, 8, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__1': 88.185, 'volume__2': 25685485, 'low_price__2': 87.84, 'high_price__2': 88.345, 'ticker__2': 'TLT', 'close_price__2': 87.97, 'trade_date__2': datetime.datetime(2025, 12, 9, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__2': 88.34, 'volume__3': 46656043, 'low_price__3': 87.855, 'high_price__3': 88.52, 'ticker__3': 'TLT', 'close_price__3': 88.31, 'trade_date__3': datetime.datetime(2025, 12, 10, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__3': 88.0}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-12-10 19:25:28,067 - INFO - 🧠 Smart ETF Collector initialized.
+2025-12-10 19:25:28,068 - INFO - --- Checking SPY ---
+2025-12-10 19:25:28,088 - INFO - 🔄 이어달리기: 2025-12-05부터 수집
+2025-12-10 19:25:28,390 - INFO - ✅ SPY: 4개 데이터 수집 완료 (OHLCV)
+2025-12-10 19:25:28,404 - ERROR - ❌ DB Save Failed: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "practice_spy_ticker_trade_date_key"
+DETAIL:  Key (ticker, trade_date)=(SPY, 2025-12-04) already exists.
+
+[SQL: INSERT INTO practice_spy (trade_date, open_price, high_price, low_price, close_price, volume, ticker) VALUES (%(trade_date__0)s, %(open_price__0)s, %(high_price__0)s, %(low_price__0)s, %(close_price__0)s, %(volume__0)s, %(ticker__0)s), (%(trade_date_ ... 265 characters truncated ... n_price__3)s, %(high_price__3)s, %(low_price__3)s, %(close_price__3)s, %(volume__3)s, %(ticker__3)s)]
+[parameters: {'low_price__0': 684.58, 'high_price__0': 688.39, 'open_price__0': 685.47, 'volume__0': 79241045, 'ticker__0': 'SPY', 'trade_date__0': datetime.datetime(2025, 12, 5, 0, 0, tzinfo=datetime.timezone.utc), 'close_price__0': 685.69, 'low_price__1': 681.57, 'high_price__1': 686.64, 'open_price__1': 686.59, 'volume__1': 53033654, 'ticker__1': 'SPY', 'trade_date__1': datetime.datetime(2025, 12, 8, 0, 0, tzinfo=datetime.timezone.utc), 'close_price__1': 683.63, 'low_price__2': 682.59, 'high_price__2': 685.385, 'open_price__2': 683.15, 'volume__2': 56313923, 'ticker__2': 'SPY', 'trade_date__2': datetime.datetime(2025, 12, 9, 0, 0, tzinfo=datetime.timezone.utc), 'close_price__2': 683.04, 'low_price__3': 681.31, 'high_price__3': 688.97, 'open_price__3': 682.56, 'volume__3': 85671334, 'ticker__3': 'SPY', 'trade_date__3': datetime.datetime(2025, 12, 10, 0, 0, tzinfo=datetime.timezone.utc), 'close_price__3': 687.57}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-12-10 19:25:29,409 - INFO - --- Checking QQQ ---
+2025-12-10 19:25:29,412 - INFO - 🔄 이어달리기: 2025-12-05부터 수집
+2025-12-10 19:25:29,745 - INFO - ✅ QQQ: 4개 데이터 수집 완료 (OHLCV)
+2025-12-10 19:25:29,752 - ERROR - ❌ DB Save Failed: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "practice_spy_ticker_trade_date_key"
+DETAIL:  Key (ticker, trade_date)=(QQQ, 2025-12-04) already exists.
+
+[SQL: INSERT INTO practice_spy (trade_date, open_price, high_price, low_price, close_price, volume, ticker) VALUES (%(trade_date__0)s, %(open_price__0)s, %(high_price__0)s, %(low_price__0)s, %(close_price__0)s, %(volume__0)s, %(ticker__0)s), (%(trade_date_ ... 265 characters truncated ... n_price__3)s, %(high_price__3)s, %(low_price__3)s, %(close_price__3)s, %(volume__3)s, %(ticker__3)s)]
+[parameters: {'low_price__0': 623.71, 'high_price__0': 628.92, 'open_price__0': 624.38, 'volume__0': 53614169, 'ticker__0': 'QQQ', 'trade_date__0': datetime.datetime(2025, 12, 5, 0, 0, tzinfo=datetime.timezone.utc), 'close_price__0': 625.48, 'low_price__1': 621.69, 'high_price__1': 628.84, 'open_price__1': 627.21, 'volume__1': 42019642, 'ticker__1': 'QQQ', 'trade_date__1': datetime.datetime(2025, 12, 8, 0, 0, tzinfo=datetime.timezone.utc), 'close_price__1': 624.28, 'low_price__2': 621.0, 'high_price__2': 625.87, 'open_price__2': 623.01, 'volume__2': 36918603, 'ticker__2': 'QQQ', 'trade_date__2': datetime.datetime(2025, 12, 9, 0, 0, tzinfo=datetime.timezone.utc), 'close_price__2': 625.05, 'low_price__3': 620.99, 'high_price__3': 629.21, 'open_price__3': 623.85, 'volume__3': 55031384, 'ticker__3': 'QQQ', 'trade_date__3': datetime.datetime(2025, 12, 10, 0, 0, tzinfo=datetime.timezone.utc), 'close_price__3': 627.61}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-12-10 19:25:30,757 - INFO - --- Checking GLD ---
+2025-12-10 19:25:30,759 - INFO - 🔄 이어달리기: 2025-12-05부터 수집
+2025-12-10 19:25:31,069 - INFO - ✅ GLD: 4개 데이터 수집 완료 (OHLCV)
+2025-12-10 19:25:31,074 - ERROR - ❌ DB Save Failed: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "practice_spy_ticker_trade_date_key"
+DETAIL:  Key (ticker, trade_date)=(GLD, 2025-12-04) already exists.
+
+[SQL: INSERT INTO practice_spy (trade_date, open_price, high_price, low_price, close_price, volume, ticker) VALUES (%(trade_date__0)s, %(open_price__0)s, %(high_price__0)s, %(low_price__0)s, %(close_price__0)s, %(volume__0)s, %(ticker__0)s), (%(trade_date_ ... 265 characters truncated ... n_price__3)s, %(high_price__3)s, %(low_price__3)s, %(close_price__3)s, %(volume__3)s, %(ticker__3)s)]
+[parameters: {'low_price__0': 386.175, 'high_price__0': 391.735, 'open_price__0': 389.12, 'volume__0': 9449808, 'ticker__0': 'GLD', 'trade_date__0': datetime.datetime(2025, 12, 5, 0, 0, tzinfo=datetime.timezone.utc), 'close_price__0': 386.44, 'low_price__1': 384.01, 'high_price__1': 387.2418, 'open_price__1': 387.02, 'volume__1': 6766623, 'ticker__1': 'GLD', 'trade_date__1': datetime.datetime(2025, 12, 8, 0, 0, tzinfo=datetime.timezone.utc), 'close_price__1': 385.42, 'low_price__2': 385.27, 'high_price__2': 388.21, 'open_price__2': 385.62, 'volume__2': 6002824, 'ticker__2': 'GLD', 'trade_date__2': datetime.datetime(2025, 12, 9, 0, 0, tzinfo=datetime.timezone.utc), 'close_price__2': 387.4, 'low_price__3': 384.5, 'high_price__3': 389.76, 'open_price__3': 385.95, 'volume__3': 9120475, 'ticker__3': 'GLD', 'trade_date__3': datetime.datetime(2025, 12, 10, 0, 0, tzinfo=datetime.timezone.utc), 'close_price__3': 389.05}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-12-10 19:25:32,079 - INFO - --- Checking TLT ---
+2025-12-10 19:25:32,082 - INFO - 🔄 이어달리기: 2025-12-05부터 수집
+2025-12-10 19:25:32,421 - INFO - ✅ TLT: 4개 데이터 수집 완료 (OHLCV)
+2025-12-10 19:25:32,429 - ERROR - ❌ DB Save Failed: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "practice_spy_ticker_trade_date_key"
+DETAIL:  Key (ticker, trade_date)=(TLT, 2025-12-04) already exists.
+
+[SQL: INSERT INTO practice_spy (trade_date, open_price, high_price, low_price, close_price, volume, ticker) VALUES (%(trade_date__0)s, %(open_price__0)s, %(high_price__0)s, %(low_price__0)s, %(close_price__0)s, %(volume__0)s, %(ticker__0)s), (%(trade_date_ ... 265 characters truncated ... n_price__3)s, %(high_price__3)s, %(low_price__3)s, %(close_price__3)s, %(volume__3)s, %(ticker__3)s)]
+[parameters: {'low_price__0': 88.045, 'high_price__0': 88.55, 'open_price__0': 88.55, 'volume__0': 32808068, 'ticker__0': 'TLT', 'trade_date__0': datetime.datetime(2025, 12, 5, 0, 0, tzinfo=datetime.timezone.utc), 'close_price__0': 88.17, 'low_price__1': 87.56, 'high_price__1': 88.2, 'open_price__1': 88.185, 'volume__1': 32097083, 'ticker__1': 'TLT', 'trade_date__1': datetime.datetime(2025, 12, 8, 0, 0, tzinfo=datetime.timezone.utc), 'close_price__1': 87.88, 'low_price__2': 87.84, 'high_price__2': 88.345, 'open_price__2': 88.34, 'volume__2': 25685485, 'ticker__2': 'TLT', 'trade_date__2': datetime.datetime(2025, 12, 9, 0, 0, tzinfo=datetime.timezone.utc), 'close_price__2': 87.97, 'low_price__3': 87.855, 'high_price__3': 88.52, 'open_price__3': 88.0, 'volume__3': 46656043, 'ticker__3': 'TLT', 'trade_date__3': datetime.datetime(2025, 12, 10, 0, 0, tzinfo=datetime.timezone.utc), 'close_price__3': 88.31}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-12-10 19:25:36,503 - INFO - 🧠 Smart ETF Collector initialized.
+2025-12-10 19:25:36,504 - INFO - --- Checking SPY ---
+2025-12-10 19:25:36,523 - INFO - 🔄 이어달리기: 2025-12-05부터 수집
+2025-12-10 19:25:36,855 - INFO - ✅ SPY: 4개 데이터 수집 완료 (OHLCV)
+2025-12-10 19:25:36,870 - ERROR - ❌ DB Save Failed: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "practice_spy_ticker_trade_date_key"
+DETAIL:  Key (ticker, trade_date)=(SPY, 2025-12-04) already exists.
+
+[SQL: INSERT INTO practice_spy (trade_date, open_price, high_price, low_price, close_price, volume, ticker) VALUES (%(trade_date__0)s, %(open_price__0)s, %(high_price__0)s, %(low_price__0)s, %(close_price__0)s, %(volume__0)s, %(ticker__0)s), (%(trade_date_ ... 265 characters truncated ... n_price__3)s, %(high_price__3)s, %(low_price__3)s, %(close_price__3)s, %(volume__3)s, %(ticker__3)s)]
+[parameters: {'high_price__0': 688.39, 'ticker__0': 'SPY', 'close_price__0': 685.69, 'volume__0': 79241045, 'low_price__0': 684.58, 'trade_date__0': datetime.datetime(2025, 12, 5, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__0': 685.47, 'high_price__1': 686.64, 'ticker__1': 'SPY', 'close_price__1': 683.63, 'volume__1': 53033654, 'low_price__1': 681.57, 'trade_date__1': datetime.datetime(2025, 12, 8, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__1': 686.59, 'high_price__2': 685.385, 'ticker__2': 'SPY', 'close_price__2': 683.04, 'volume__2': 56313923, 'low_price__2': 682.59, 'trade_date__2': datetime.datetime(2025, 12, 9, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__2': 683.15, 'high_price__3': 688.97, 'ticker__3': 'SPY', 'close_price__3': 687.57, 'volume__3': 85671334, 'low_price__3': 681.31, 'trade_date__3': datetime.datetime(2025, 12, 10, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__3': 682.56}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-12-10 19:25:37,876 - INFO - --- Checking QQQ ---
+2025-12-10 19:25:37,878 - INFO - 🔄 이어달리기: 2025-12-05부터 수집
+2025-12-10 19:25:38,196 - INFO - ✅ QQQ: 4개 데이터 수집 완료 (OHLCV)
+2025-12-10 19:25:38,206 - ERROR - ❌ DB Save Failed: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "practice_spy_ticker_trade_date_key"
+DETAIL:  Key (ticker, trade_date)=(QQQ, 2025-12-04) already exists.
+
+[SQL: INSERT INTO practice_spy (trade_date, open_price, high_price, low_price, close_price, volume, ticker) VALUES (%(trade_date__0)s, %(open_price__0)s, %(high_price__0)s, %(low_price__0)s, %(close_price__0)s, %(volume__0)s, %(ticker__0)s), (%(trade_date_ ... 265 characters truncated ... n_price__3)s, %(high_price__3)s, %(low_price__3)s, %(close_price__3)s, %(volume__3)s, %(ticker__3)s)]
+[parameters: {'high_price__0': 628.92, 'ticker__0': 'QQQ', 'close_price__0': 625.48, 'volume__0': 53614169, 'low_price__0': 623.71, 'trade_date__0': datetime.datetime(2025, 12, 5, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__0': 624.38, 'high_price__1': 628.84, 'ticker__1': 'QQQ', 'close_price__1': 624.28, 'volume__1': 42019642, 'low_price__1': 621.69, 'trade_date__1': datetime.datetime(2025, 12, 8, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__1': 627.21, 'high_price__2': 625.87, 'ticker__2': 'QQQ', 'close_price__2': 625.05, 'volume__2': 36918603, 'low_price__2': 621.0, 'trade_date__2': datetime.datetime(2025, 12, 9, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__2': 623.01, 'high_price__3': 629.21, 'ticker__3': 'QQQ', 'close_price__3': 627.61, 'volume__3': 55031384, 'low_price__3': 620.99, 'trade_date__3': datetime.datetime(2025, 12, 10, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__3': 623.85}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-12-10 19:25:39,211 - INFO - --- Checking GLD ---
+2025-12-10 19:25:39,214 - INFO - 🔄 이어달리기: 2025-12-05부터 수집
+2025-12-10 19:25:39,539 - INFO - ✅ GLD: 4개 데이터 수집 완료 (OHLCV)
+2025-12-10 19:25:39,547 - ERROR - ❌ DB Save Failed: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "practice_spy_ticker_trade_date_key"
+DETAIL:  Key (ticker, trade_date)=(GLD, 2025-12-04) already exists.
+
+[SQL: INSERT INTO practice_spy (trade_date, open_price, high_price, low_price, close_price, volume, ticker) VALUES (%(trade_date__0)s, %(open_price__0)s, %(high_price__0)s, %(low_price__0)s, %(close_price__0)s, %(volume__0)s, %(ticker__0)s), (%(trade_date_ ... 265 characters truncated ... n_price__3)s, %(high_price__3)s, %(low_price__3)s, %(close_price__3)s, %(volume__3)s, %(ticker__3)s)]
+[parameters: {'high_price__0': 391.735, 'ticker__0': 'GLD', 'close_price__0': 386.44, 'volume__0': 9449808, 'low_price__0': 386.175, 'trade_date__0': datetime.datetime(2025, 12, 5, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__0': 389.12, 'high_price__1': 387.2418, 'ticker__1': 'GLD', 'close_price__1': 385.42, 'volume__1': 6766623, 'low_price__1': 384.01, 'trade_date__1': datetime.datetime(2025, 12, 8, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__1': 387.02, 'high_price__2': 388.21, 'ticker__2': 'GLD', 'close_price__2': 387.4, 'volume__2': 6002824, 'low_price__2': 385.27, 'trade_date__2': datetime.datetime(2025, 12, 9, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__2': 385.62, 'high_price__3': 389.76, 'ticker__3': 'GLD', 'close_price__3': 389.05, 'volume__3': 9120475, 'low_price__3': 384.5, 'trade_date__3': datetime.datetime(2025, 12, 10, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__3': 385.95}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-12-10 19:25:40,550 - INFO - --- Checking TLT ---
+2025-12-10 19:25:40,553 - INFO - 🔄 이어달리기: 2025-12-05부터 수집
+2025-12-10 19:25:40,863 - INFO - ✅ TLT: 4개 데이터 수집 완료 (OHLCV)
+2025-12-10 19:25:40,871 - ERROR - ❌ DB Save Failed: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "practice_spy_ticker_trade_date_key"
+DETAIL:  Key (ticker, trade_date)=(TLT, 2025-12-04) already exists.
+
+[SQL: INSERT INTO practice_spy (trade_date, open_price, high_price, low_price, close_price, volume, ticker) VALUES (%(trade_date__0)s, %(open_price__0)s, %(high_price__0)s, %(low_price__0)s, %(close_price__0)s, %(volume__0)s, %(ticker__0)s), (%(trade_date_ ... 265 characters truncated ... n_price__3)s, %(high_price__3)s, %(low_price__3)s, %(close_price__3)s, %(volume__3)s, %(ticker__3)s)]
+[parameters: {'high_price__0': 88.55, 'ticker__0': 'TLT', 'close_price__0': 88.17, 'volume__0': 32808068, 'low_price__0': 88.045, 'trade_date__0': datetime.datetime(2025, 12, 5, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__0': 88.55, 'high_price__1': 88.2, 'ticker__1': 'TLT', 'close_price__1': 87.88, 'volume__1': 32097083, 'low_price__1': 87.56, 'trade_date__1': datetime.datetime(2025, 12, 8, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__1': 88.185, 'high_price__2': 88.345, 'ticker__2': 'TLT', 'close_price__2': 87.97, 'volume__2': 25685485, 'low_price__2': 87.84, 'trade_date__2': datetime.datetime(2025, 12, 9, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__2': 88.34, 'high_price__3': 88.52, 'ticker__3': 'TLT', 'close_price__3': 88.31, 'volume__3': 46656043, 'low_price__3': 87.855, 'trade_date__3': datetime.datetime(2025, 12, 10, 0, 0, tzinfo=datetime.timezone.utc), 'open_price__3': 88.0}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)

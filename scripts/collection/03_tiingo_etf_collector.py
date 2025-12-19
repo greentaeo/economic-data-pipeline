@@ -1,150 +1,143 @@
-import requests
-import time
-import logging
-import pandas as pd
+import os
 import sys
-from datetime import datetime, timedelta
-from pathlib import Path
+import requests  # <-- requests 라이브러리 사용 (직접 통신)
+import pandas as pd
 from sqlalchemy import create_engine, text
+from dotenv import load_dotenv
+from datetime import datetime
 
-# --- [설정 파일 연동] ---
-FILE = Path(__file__).resolve()
-ROOT = FILE.parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.append(str(ROOT))
+# --- 환경 변수 설정 ---
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
+load_dotenv()
 
-from config.settings import API_KEYS, LOG_DIR
+DB_URI = os.getenv("SUPABASE_DB_URI")
+TIINGO_API_KEY = os.getenv("TIINGO_API_KEY")
 
-# --- [DB 접속 정보] ---
-# 실전에서는 settings.py에 넣지만, 일단 연습이니까 여기에 둡니다.
-DB_URI = "postgresql+psycopg2://xodh3@localhost:5432/economy_db"
+if not DB_URI:
+    DB_URI = "postgresql+psycopg2://xodh3@localhost:5432/economy_db"
 
-# --- [로깅 설정] ---
-log_file = LOG_DIR / 'etf_db_collector.log'
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(log_file),
-        logging.StreamHandler()
-    ]
-)
+TABLE_NAME = "market_price_daily"
 
 
-class SmartETFCollector:
-    def __init__(self, years_back=1):
-        self.api_key = API_KEYS['TIINGO']
-        self.base_url = 'https://api.tiingo.com'
-        self.years_back = years_back
-        self.years_back = years_back
-        self.engine = create_engine(DB_URI)
-        self.etfs = ['SPY', 'QQQ', 'GLD', 'TLT']
-        logging.info("🧠 Smart ETF Collector initialized.")
+# --- [DB 저장 함수: UPSERT] ---
+def save_data(df: pd.DataFrame, conn, table_name):
+    """
+    DB에 데이터를 UPSERT (UPDATE OR INSERT) 방식으로 저장합니다.
+    """
+    if df.empty:
+        return
 
-    def get_last_date_from_db(self, ticker):
-        """DB에 접속해서 해당 종목의 '가장 마지막 날짜'를 알아옵니다."""
-        try:
-            with self.engine.connect() as conn:
-            # 쿼리: ticker가 일치하는 데이터 중 가장 큰(MAX) 날짜를 가져와라
-                query = text("SELECT MAX(trade_date) FROM practice_spy WHERE ticker = :ticker")
-                result = conn.execute(query, {'ticker': ticker}).fetchone()
+    # 임시 테이블로 먼저 저장합니다.
+    df.to_sql('temp_tiingo_data', conn, if_exists='replace', index=False)
 
-                if result and result[0]:
-                    return result[0]
-        except Exception as e:
-            logging.warning(f"⚠️ {ticker} 날짜 조회 실패 (첫 수집으로 간주): {e}")
-        return None
+    # 임시 테이블의 데이터를 최종 테이블로 UPSERT 합니다.
+    # Tiingo API의 원본 컬럼명(date, open, high...)을 우리 DB 컬럼명으로 매핑하여 넣습니다.
+    upsert_query = f"""
+    INSERT INTO {table_name} (trade_date, open_price, high_price, low_price, close_price, volume, symbol)
+    SELECT 
+        trade_date, 
+        open_price, 
+        high_price, 
+        low_price, 
+        close_price, 
+        volume, 
+        symbol
+    FROM temp_tiingo_data
+    ON CONFLICT (symbol, trade_date) DO UPDATE SET
+        open_price = EXCLUDED.open_price,
+        high_price = EXCLUDED.high_price,
+        low_price = EXCLUDED.low_price,
+        close_price = EXCLUDED.close_price,
+        volume = EXCLUDED.volume;
+    """
+    conn.execute(text(upsert_query))
+    conn.commit()
 
-    def get_etf_data(self, symbol: str, start_date: datetime, end_date: datetime) -> pd.DataFrame:
-        headers = {
-            'Content-Type': 'application/json',
-            'Authorization': f'Token {self.api_key}'
-        }
 
-        # 날짜 문자열 변환
-        start_str = start_date.strftime('%Y-%m-%d')
-        end_str = end_date.strftime('%Y-%m-%d')
+def get_last_date(conn, symbol):
+    """DB에서 특정 심볼의 마지막 날짜를 조회합니다."""
+    query = text(f"SELECT MAX(trade_date) FROM {TABLE_NAME} WHERE symbol = :symbol")
+    result = conn.execute(query, {'symbol': symbol}).scalar()
 
-        url = f"https://api.tiingo.com/tiingo/daily/{symbol}/prices?startDate={start_str}&endDate={end_str}"
+    if result:
+        return (pd.to_datetime(result) + pd.Timedelta(days=1)).strftime('%Y-%m-%d')
+    # 데이터가 없으면 10년 전부터 시작
+    return (datetime.now() - pd.Timedelta(days=365 * 10)).strftime('%Y-%m-%d')
 
-        try:
-            response = requests.get(url, headers=headers)
-            if response.status_code == 200:
+
+# --- [메인 수집 로직: Requests 사용] ---
+def collect_etf_data():
+    if not TIINGO_API_KEY:
+        print("❌ ERROR: TIINGO_API_KEY가 없습니다.")
+        return
+
+    print("🚀 ETF 데이터 수집 시작 (Tiingo Direct API)...")
+    engine = create_engine(DB_URI)
+
+    TICKERS = ["QQQ", "SPY", "GLD", "TLT"]
+
+    # HTTP 헤더 설정
+    headers = {
+        'Content-Type': 'application/json'
+    }
+
+    with engine.connect() as conn:
+        for ticker in TICKERS:
+            # 1. 시작 날짜 계산
+            start_date = get_last_date(conn, ticker)
+            print(f"   🔄 {ticker}: {start_date} 부터 데이터 요청 중...")
+
+            try:
+                # 2. Tiingo REST API 직접 호출
+                url = f"https://api.tiingo.com/tiingo/daily/{ticker}/prices"
+                params = {
+                    'startDate': start_date,
+                    'token': TIINGO_API_KEY
+                }
+
+                response = requests.get(url, params=params, headers=headers)
+
+                if response.status_code != 200:
+                    print(f"   ⚠️ {ticker} API 호출 실패: {response.text}")
+                    continue
+
                 data = response.json()
-                if not data:
-                    return None
 
+                if not data:
+                    print(f"   ⚠️ {ticker}: 새로운 데이터 없음.")
+                    continue
+
+                # 3. JSON 데이터를 DataFrame으로 변환
                 df = pd.DataFrame(data)
 
-                # [업그레이드 포인트] 필요한 컬럼만 뽑아서 이름 바꾸기
-                # Tiingo API가 주는 이름: date, open, high, low, close, volume, adjClose...
-                # 우리 DB 이름: trade_date, open_price, high_price, low_price, close_price, volume
+                # 4. 컬럼 이름 매핑 (Tiingo API -> 우리 DB 구조)
+                # Tiingo는 date, open, high, low, close, volume, adjClose... 등을 줍니다.
+                df = df.rename(columns={
+                    'date': 'trade_date',
+                    'open': 'open_price',
+                    'high': 'high_price',
+                    'low': 'low_price',
+                    'close': 'close_price',
+                    # volume은 그대로 volume
+                })
 
-                df = df[['date', 'open', 'high', 'low', 'close', 'volume']]
-                df.columns = ['trade_date', 'open_price', 'high_price', 'low_price', 'close_price', 'volume']
+                # 필요한 컬럼만 남기기
+                df['symbol'] = ticker
+                df = df[['trade_date', 'open_price', 'high_price', 'low_price', 'close_price', 'volume', 'symbol']]
 
-                df['ticker'] = symbol
-                df['trade_date'] = pd.to_datetime(df['trade_date'])
+                # 날짜 형식 정리 (ISO 포맷 -> datetime)
+                df['trade_date'] = pd.to_datetime(df['trade_date']).dt.tz_localize(None)
 
-                logging.info(f"✅ {symbol}: {len(df)}개 데이터 수집 완료 (OHLCV)")
-                return df
-            else:
-                logging.error(f"Error {response.status_code}: {response.text}")
-                return None
-        except Exception as e:
-            logging.error(f"API Error: {e}")
-            return None
+                # 5. DB 저장
+                save_data(df, conn, TABLE_NAME)
 
-    def save_to_db(self, df):
-        if df is None or df.empty:
-            return
+                print(f"   ✅ {ticker}: {len(df)}개 데이터 저장 완료.")
 
-        try:
-            # 🚀 여기가 핵심! to_sql로 DB에 바로 쏘기
-            # if_exists='append': 데이터가 있으면 그 뒤에 이어 붙여라
-            # index=False: 판다스 숫자 인덱스(0,1,2...)는 넣지 마라
-            df.to_sql('practice_spy', self.engine, if_exists='append', index=False)
-            logging.info(f"💾 Saved {len(df)} rows to DB (practice_spy)")
-        except Exception as e:
-            logging.error(f"❌ DB Save Failed: {e}")
+            except Exception as e:
+                print(f"   ❌ {ticker} 에러 발생: {e}")
 
-    def run(self):
-        today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+    print("🎉 모든 ETF 데이터 업데이트 완료!")
 
-        for symbol in self.etfs:
-            logging.info(f"--- Checking {symbol} ---")
-
-            # 1. DB에서 마지막 날짜 확인 (이어달리기)
-            last_db_date = self.get_last_date_from_db(symbol)
-
-            if last_db_date:
-                # 마지막 날짜가 있으면, 그 '다음 날'부터 수집 시작
-                # last_db_date는 date 타입이므로 datetime으로 변환 필요할 수 있음
-                if isinstance(last_db_date, str):
-                    last_db_date = datetime.strptime(last_db_date, '%Y-%m-%d').date()
-
-                start_date = datetime(last_db_date.year, last_db_date.month, last_db_date.day) + timedelta(days=1)
-                logging.info(f"🔄 이어달리기: {start_date.strftime('%Y-%m-%d')}부터 수집")
-
-            else:
-                # DB에 데이터가 없으면 설정된 기간만큼 수집
-                start_date = today - timedelta(days=self.years_back * 365)
-                logging.info(f"🆕 신규 수집: {start_date.strftime('%Y-%m-%d')}부터 수집 (데이터 없음)")
-                # 2. 이미 최신이면 건너뛰기
-                # 2. 날짜 검증 (시작일이 오늘보다 미래거나 같으면 패스)
-            if start_date >= today:
-                logging.info(f"✅ {symbol}: 업데이트할 데이터가 없습니다. (최신 상태)")
-                continue
-
-                # 3. 데이터 수집 및 저장
-            df = self.get_etf_data(symbol, start_date, today)
-
-            if df is not None and not df.empty:
-                self.save_to_db(df)
-            else:
-                logging.info(f"🤷‍♂️ {symbol}: API에서 데이터를 못 가져왔습니다.")
-
-            time.sleep(1)
 
 if __name__ == "__main__":
-    SmartETFCollector(years_back=1).run()
+    collect_etf_data()

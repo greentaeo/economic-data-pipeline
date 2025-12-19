@@ -36,3 +36,4 @@ logs/             # 모든 로그 파일
 *.csv
 *.xlsx
 *.db              # 로컬 SQLite DB 등
+
