@@ -37,4 +37,4 @@ jobs:
         SUPABASE_DB_URI: ${{ secrets.SUPABASE_DB_URI }}
         TIINGO_API_KEY: ${{ secrets.TIINGO_API_KEY }}
       run: |
-        python collect_stock_data.py
+        python scripts/collection/collect_stock_data.py
